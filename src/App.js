@@ -1,6 +1,5 @@
-// src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, NavLink } from 'react-router-dom';
 import Home from './Home/Home';
 import Programs from './Programs/Programs';
 import Coaches from './Coaches/Coaches';
@@ -11,18 +10,18 @@ import logo from './images/logo.png';
 
 const App = () => {
   return (
-    <Router >
+    <Router>
       <div className="App">
         <nav className="navbar">
           <div>
             <img src={logo} className="logo" alt="Logo" />
           </div>
           <ul className="menu">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/programs">Programs</Link></li>
-            <li><Link to="/coaches">Coaches</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
-            <li><Link to="/register" className="register-button">Register</Link></li>
+            <li><NavLink exact to="/" activeClassName="active">Home</NavLink></li>
+            <li><NavLink to="/programs" activeClassName="active">Programs</NavLink></li>
+            <li><NavLink to="/coaches" activeClassName="active">Coaches</NavLink></li>
+            <li><NavLink to="/contact" activeClassName="active">Contact</NavLink></li>
+            <li><NavLink to="/register" className="register-button">Register</NavLink></li>
           </ul>
         </nav>
         <p>hi</p>
