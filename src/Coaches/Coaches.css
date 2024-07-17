@@ -1,0 +1,73 @@
+/* src/Coaches.css */
+
+.main-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: 15rem;
+  margin-right: 15rem;  
+  padding-bottom: 4rem;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.coach-card {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 15px 0;
+  width: 100%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  align-items: center;
+  background-color: white;
+}
+
+.coach-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  margin-right: 20px;
+  object-fit: cover;
+}
+
+.coach-info {
+  flex: 1;
+}
+
+h2 {
+  width: 100%;
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+h4 {
+  font-size: 20px;
+  font-weight: normal;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: #795E00;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

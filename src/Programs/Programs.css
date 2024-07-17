@@ -1,0 +1,72 @@
+/* src/Programs.css */
+
+.main-content {
+  display: flex;
+  padding-top:10rem;
+  margin-left: 15rem;
+  margin-right: 15rem;
+}
+
+.faceted-search {
+  width: 200px;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.facet {
+  margin-bottom: 20px;
+}
+
+.facet label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.checkbox-group input {
+  margin-right: 5px;
+}
+
+.program-cards {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  overflow-y: auto;
+  max-height: 71vh;
+  padding-right: 10px;
+}
+
+.program-card {
+  background-color:white;
+  border-radius: 10px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px;
+  width: calc(33.333% - 20px); 
+  box-sizing: border-box;
+}
+
+
+.weekly-activities {
+  margin-top: 20px;
+}
+
+.weekly-activities table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.weekly-activities th,
+.weekly-activities td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
