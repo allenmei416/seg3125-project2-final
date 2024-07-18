@@ -4,7 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import map from '../images/map.png';
 
-const Contact = () => {
+// JSON data for different languages
+import en from '../en.json';
+import fr from '../fr.json';
+
+const Contact = ({ language }) => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
 
@@ -16,22 +20,25 @@ const Contact = () => {
     }
   };
 
+  // Determine text content based on language prop
+  const textContent = language === 'en' ? en : fr;
+
   return (
     <div className="main-content">
       <div className="left-column">
-        <h2>Contact Information</h2>
+        <h2>{textContent.contact.title}</h2>
         <div className="contact-info">
           <div className="contact-item">
-            <h3><FontAwesomeIcon icon={faMapMarkerAlt} /> Address</h3>
+            <h3><FontAwesomeIcon icon={faMapMarkerAlt} /> {textContent.contact.address}</h3>
             <p>1234 Innovation Drive</p>
             <p>Metropolis, CA</p>
           </div>
           <div className="contact-item">
-            <h3><FontAwesomeIcon icon={faEnvelope} /> Email</h3>
+            <h3><FontAwesomeIcon icon={faEnvelope} /> {textContent.contact.email}</h3>
             <p><a href="mailto:TMLhockey@gmail.com">TMLhockey@gmail.com</a></p>
           </div>
           <div className="contact-item">
-            <h3><FontAwesomeIcon icon={faPhone} /> Phone Number</h3>
+            <h3><FontAwesomeIcon icon={faPhone} /> {textContent.contact.phone}</h3>
             <p><a href="tel:111-111-1111">111-111-1111</a></p>
           </div>
         </div>
@@ -41,8 +48,8 @@ const Contact = () => {
       </div>
       <div className="right-column">
         <div className="chat-container">
-          <h3>Live Chat</h3>
-          <p className="chat-description">Communicate with our support team/coaches for immediate assistance.</p>
+          <h3>{textContent.contact.liveChat}</h3>
+          <p className="chat-description">{textContent.contact.liveChatDescription}</p>
           <div className="chat-box">
             <div className="messages">
               {messages.map((message, index) => (
@@ -56,10 +63,10 @@ const Contact = () => {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Type your message..."
+                placeholder={textContent.contact.typeMessage}
                 required
               />
-              <button type="submit">Send</button>
+              <button type="submit">{textContent.contact.sendButton}</button>
             </form>
           </div>
         </div>

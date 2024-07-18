@@ -1,29 +1,55 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useNavigate } from 'react-router-dom';
+import { Tooltip } from 'react-tooltip';
 import './Register.css';
 
 const Register = () => {
+  const navigate = useNavigate();
+  const maxChildren = 5;
   const [parentInfo, setParentInfo] = useState({
     fullName: '',
     phoneNumber: '',
     email: '',
   });
-  const [children, setChildren] = useState([{
-    fullName: '',
-    birthday: null,
-    program: '',
-    schedule: {
-      Monday: { attending: false },
-      Tuesday: { attending: false },
-      Wednesday: { attending: false },
-      Thursday: { attending: false },
-      Friday: { attending: false },
+  const [children, setChildren] = useState([
+    {
+      fullName: '',
+      birthday: null,
+      program: '',
+      schedule: {
+        Monday: { attending: false },
+        Tuesday: { attending: false },
+        Wednesday: { attending: false },
+        Thursday: { attending: false },
+        Friday: { attending: false },
+      }
     }
-  }]);
+  ]);
+  const [errors, setErrors] = useState({});
+
+  const validateField = (name, value) => {
+    let errorMsg = '';
+    if (name === 'email') {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(value)) {
+        errorMsg = 'Invalid email address';
+      }
+    } else if (name === 'phoneNumber') {
+      const phoneRegex = /^\d{10}$/;
+      if (!phoneRegex.test(value)) {
+        errorMsg = 'Phone number must be 10 digits';
+      }
+    } else if (name === 'fullName' && value.trim() === '') {
+      errorMsg = 'Full name is required';
+    }
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: errorMsg }));
+  };
 
   const handleParentChange = (e) => {
     const { name, value } = e.target;
+    validateField(name, value);
     setParentInfo({ ...parentInfo, [name]: value });
   };
 
@@ -47,24 +73,27 @@ const Register = () => {
   };
 
   const addAnotherChild = () => {
-    setChildren([...children, {
-      fullName: '',
-      birthday: null,
-      program: '',
-      schedule: {
-        Monday: { attending: false },
-        Tuesday: { attending: false },
-        Wednesday: { attending: false },
-        Thursday: { attending: false },
-        Friday: { attending: false },
-      }
-    }]);
+    if (children.length < maxChildren) {
+      setChildren([...children, {
+        fullName: '',
+        birthday: null,
+        program: '',
+        schedule: {
+          Monday: { attending: false },
+          Tuesday: { attending: false },
+          Wednesday: { attending: false },
+          Thursday: { attending: false },
+          Friday: { attending: false },
+        }
+      }]);
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Parent Info:', parentInfo);
-    console.log('Children:', children);
+    // Perform any validation or submission logic here
+    // For simplicity, just navigate to confirmation page
+    navigate('/confirmation', { state: { parentInfo, children } });
   };
 
   return (
@@ -73,7 +102,9 @@ const Register = () => {
       <form onSubmit={handleSubmit}>
         <h3>Parent’s Information</h3>
         <div className="form-group">
-          <label>Full Name</label>
+          <label>
+            Full Name*
+          </label>
           <input
             type="text"
             name="fullName"
@@ -82,9 +113,12 @@ const Register = () => {
             placeholder="Enter full name"
             required
           />
+          {errors.fullName && <span className="error">{errors.fullName}</span>}
         </div>
         <div className="form-group">
-          <label>Phone Number</label>
+          <label>
+            Phone Number*
+          </label>
           <input
             type="tel"
             name="phoneNumber"
@@ -93,9 +127,12 @@ const Register = () => {
             placeholder="Enter phone number"
             required
           />
+          {errors.phoneNumber && <span className="error">{errors.phoneNumber}</span>}
         </div>
         <div className="form-group">
-          <label>Email</label>
+          <label>
+            Email*
+         </label>
           <input
             type="email"
             name="email"
@@ -104,12 +141,13 @@ const Register = () => {
             placeholder="Enter email"
             required
           />
+          {errors.email && <span className="error">{errors.email}</span>}
         </div>
         {children.map((child, index) => (
           <div key={index} className="child-info">
-            <h3>Child’s Information</h3>
+            <h3>Child {index + 1} Information</h3>
             <div className="form-group">
-              <label>Full Name</label>
+              <label>Full Name*</label>
               <input
                 type="text"
                 name="fullName"
@@ -120,7 +158,7 @@ const Register = () => {
               />
             </div>
             <div className="form-group">
-              <label>Birthday</label>
+              <label>Birthday*</label>
               <DatePicker
                 selected={child.birthday}
                 onChange={(date) => handleBirthdayChange(index, date)}
@@ -130,7 +168,7 @@ const Register = () => {
               />
             </div>
             <div className="form-group">
-              <label>Camp Program</label>
+              <label>Camp Program*</label>
               <select
                 name="program"
                 value={child.program}
@@ -147,9 +185,20 @@ const Register = () => {
                 <option value="7">Goalie Training Camp</option>
                 <option value="8">Hockey Conditioning</option>
                 <option value="9">Summer Hockey School</option>
-                <option value="0">Hockey Skills Clinic</option>
+                <option value="10">Hockey Skills Clinic</option>
+                <option value="11">Power Skating Program</option>
+                <option value="12">Off-Season Conditioning</option>
+                <option value="13">Peewee Hockey Training</option>
+                <option value="14">Hockey Development Camp</option>
+                <option value="15">Defenseman Training Program</option>
+                <option value="16">Forward Skills Training</option>
+                <option value="17">Shooting and Scoring Clinic</option>
+                <option value="18">Speed and Agility Camp</option>
+                <option value="19">Stickhandling Skills Camp</option>
+                <option value="20">Summer Hockey Development</option>
               </select>
             </div>
+            <p><br></br>Check which days the child will be attending</p>
             <table className="schedule-table">
               <thead>
                 <tr>
@@ -185,8 +234,26 @@ const Register = () => {
             </table>
           </div>
         ))}
-        <button type="button" onClick={addAnotherChild} className="add-child-button">Add Another Child</button>
+        {children.length < maxChildren && (
+          <button
+            type="button"
+            onClick={addAnotherChild}
+            className="add-child-button"
+            title="Click to add another child's information for registration"
+          >
+            Add Another Child
+          </button>
+        )}
         <button type="submit" className="submit-button">Register</button>
+        <Tooltip id="fullNameTip" place="top" effect="solid">
+          Enter your full legal name.
+        </Tooltip>
+        <Tooltip id="phoneTip" place="top" effect="solid">
+          Enter a 10-digit phone number.
+        </Tooltip>
+        <Tooltip id="emailTip" place="top" effect="solid">
+          Enter a valid email address.
+        </Tooltip>
       </form>
     </div>
   );

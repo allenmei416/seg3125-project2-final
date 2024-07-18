@@ -1,0 +1,32 @@
+{
+    "menu": {
+      "home": "Accueil",
+      "programs": "Programmes",
+      "coaches": "Entraîneurs",
+      "contact": "Contact",
+      "register": "Inscription"
+    },
+    "home": {
+      "title": "INSCRIPTION AU CAMP D'ÉTÉ OUVERTE",
+      "subtitle": "Camp de hockey TML",
+      "description": "Rejoignez-nous pour la saison estivale 2024 à Minto",
+      "getStarted": "Commencer",
+      "content": "Préparez-vous pour un été inoubliable au Camp de hockey TML, où les jeunes athlètes peuvent développer leurs compétences, se faire des amitiés durables et vivre l'excitation du jeu dans un environnement favorable et amusant. Que vous soyez débutant et cherchez à apprendre les bases ou un joueur expérimenté visant à améliorer votre jeu, notre camp offre un encadrement de première qualité, des installations de pointe et une passion pour le hockey inégalée.",
+      "highlight": "Camp avancé de 9 semaines pour les 5-10 ans",
+      "price": "400 $ par enfant"
+    },
+    "coaches": {
+      "title": "Entraîneurs"
+    },
+    "contact": {
+      "title": "Coordonnées de contact",
+      "address": "Adresse",
+      "email": "Courriel",
+      "phone": "Numéro de téléphone",
+      "liveChat": "Chat en direct",
+      "liveChatDescription": "Communiquez avec notre équipe de soutien/entraîneurs pour une assistance immédiate.",
+      "typeMessage": "Tapez votre message...",
+      "sendButton": "Envoyer"
+    }
+  }
+  

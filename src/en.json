@@ -1,0 +1,33 @@
+{
+    "menu": {
+      "home": "Home",
+      "programs": "Programs",
+      "coaches": "Coaches",
+      "contact": "Contact",
+      "register": "Register"
+    },
+    "home": {
+      "title": "SUMMER CAMP REGISTRATION OPEN",
+      "subtitle": "TML Hockey Camp",
+      "description": "Join us for the 2024 Summer Season at Minto",
+      "getStarted": "Get Started",
+      "content": "Get ready for an unforgettable summer at TML Hockey Camp, where young athletes can develop their skills, make lasting friendships, and experience the thrill of the game in a supportive and fun environment. Whether you're a beginner looking to learn the basics or an experienced player aiming to take your game to the next level, our camp offers top-notch coaching, state-of-the-art facilities, and a passion for hockey that's unmatched.",
+      "highlight": "Age 5-10 Advanced Camp for 9 weeks",
+      "price": "$400 per child"
+    },
+
+    "coaches": {
+      "title": "Coaches"
+    },
+
+    "contact": {
+      "title": "Contact Information",
+      "address": "Address",
+      "email": "Email",
+      "phone": "Phone Number",
+      "liveChat": "Live Chat",
+      "liveChatDescription": "Communicate with our support team/coaches for immediate assistance.",
+      "typeMessage": "Type your message...",
+      "sendButton": "Send"
+    }
+  }
