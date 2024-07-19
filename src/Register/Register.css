@@ -64,3 +64,21 @@
 .submit-button:hover {
   background-color: #0033CC;
 }
+
+
+.remove-child-button {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  margin: 1rem 0;
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.remove-child-button:hover {
+  background-color: #c9302c;
+}

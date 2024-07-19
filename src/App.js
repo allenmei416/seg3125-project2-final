@@ -52,7 +52,7 @@ const App = () => {
             </li>
             {/* Language switch */}
             <li className="language-switch">
-              <button onClick={toggleLanguage}>
+              <button onClick={toggleLanguage} title={language === 'en' ? 'Change language to French for entire site' : 'Changer la langue en anglais pour l\'ensemble du site'}>
                 {language === 'en' ? 'FR' : 'EN'}
               </button>
             </li>

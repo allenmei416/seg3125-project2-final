@@ -89,6 +89,11 @@ const Register = () => {
     }
   };
 
+  const removeChild = (index) => {
+    const updatedChildren = children.filter((_, i) => i !== index);
+    setChildren(updatedChildren);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // Perform any validation or submission logic here
@@ -232,6 +237,16 @@ const Register = () => {
                 })}
               </tbody>
             </table>
+            {index > 0 && (
+              <button
+                type="button"
+                onClick={() => removeChild(index)}
+                className="remove-child-button"
+                title="Click to remove this child from registration"
+              >
+                Remove Child
+              </button>
+            )}
           </div>
         ))}
         {children.length < maxChildren && (
